@@ -6,69 +6,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof particlesJS !== 'undefined') {
         particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 50,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#ffffff"
-                },
-                "shape": {
-                    "value": "circle"
-                },
-                "opacity": {
-                    "value": 0.1,
-                    "random": false
-                },
-                "size": {
-                    "value": 2,
-                    "random": true
-                },
+    "particles": {
+        "number": {
+            "value": 80, // Αύξηση από 50 σε 80 για πιο γεμάτη οθόνη
+            "density": {
+                "enable": true,
+                "value_area": 800
+            }
+        },
+        "color": {
+            "value": "#ffffff"
+        },
+        "shape": {
+            "value": "circle"
+        },
+        "opacity": {
+            "value": 0.4, // Αύξηση από 0.1 σε 0.4 για να είναι ξεκάθαρα ορατές
+            "random": true, // Κάποιες πιο αχνές, κάποιες πιο έντονες για βάθος
+            "anim": {
+                "enable": true,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+            }
+        },
+        "size": {
+            "value": 3, // Αύξηση από 2 σε 3
+            "random": true,
+            "anim": {
+                "enable": true,
+                "speed": 2,
+                "size_min": 0.1,
+                "sync": false
+            }
+        },
+        "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff", // Αλλαγή από γκρι σε λευκό
+            "opacity": 0.2, // Αύξηση από 0.1 σε 0.2
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 2, // Αύξηση από 1 σε 2 για πιο ζωντανή κίνηση
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false
+        }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {
+                "enable": true,
+                "mode": "grab" // Αλλαγή από repulse σε grab για να "συνδέονται" με τον κέρσορα
+            },
+            "onclick": {
+                "enable": true,
+                "mode": "push"
+            }
+        },
+        "modes": {
+            "grab": {
+                "distance": 200,
                 "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#808080",
-                    "opacity": 0.1,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
+                    "opacity": 0.5
                 }
             },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "repulse"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    }
-                },
-                "modes": {
-                    "repulse": {
-                        "distance": 100,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    }
-                }
-            },
-            "retina_detect": true
-        });
+            "push": {
+                "particles_nb": 4
+            }
+        }
+    },
+    "retina_detect": true
+});
     }
 
     const revealOptions = {
@@ -86,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, revealOptions);
 
     heroItems.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 0.2}s`;
-    });
+    item.style.transitionDelay = `${index * 0.4}s`;
+});
 
     animateItems.forEach(item => revealObserver.observe(item));
 

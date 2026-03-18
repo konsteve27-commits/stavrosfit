@@ -7,7 +7,8 @@
     --accent: #ffffff;
 }
 
-html, body {
+html,
+body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
@@ -38,7 +39,7 @@ main {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 2rem 150px; /* Αυξήθηκε το κάτω κενό στα 150px */
+    padding: 0 2rem 150px;
 }
 
 footer {
@@ -149,19 +150,22 @@ nav {
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 10vw, 6rem); /* Αλλαγή μεγέθους κατά 25% */
+    font-size: clamp(3rem, 10vw, 6rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
     letter-spacing: -1px;
     background: linear-gradient(90deg, #fff, #808080, #fff);
     background-size: 200% auto;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: textGradient 10s linear infinite;
 }
 
 @keyframes textGradient {
-    to { background-position: 200% center; }
+    to {
+        background-position: 200% center;
+    }
 }
 
 .hero p {
@@ -251,11 +255,13 @@ nav {
 .animate-item {
     opacity: 0;
     will-change: opacity, transform;
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Χρήση cubic-bezier για "spring" εφέ που τραβάει το βλέμμα */
+    transition: opacity 0.8s ease-out, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .fade-in-up {
-    transform: translateY(50px) scale(0.96);
+    /* Αυξημένη απόσταση από 50px σε 100px και ελαφρύ scale down στο 0.9 */
+    transform: translateY(100px) scale(0.9);
 }
 
 .fade-in-left {
@@ -268,7 +274,17 @@ nav {
 
 .animate-item.appear {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    /* Επιστροφή στην αρχική κατάσταση με απόλυτη ευκρίνεια */
+    transform: translateY(0) scale(1);
+}
+/* Ειδικά για τον τίτλο στο Hero για να "σκάει" πιο έντονα */
+.hero h1.animate-item {
+    transition-duration: 1.5s;
+    letter-spacing: -5px; /* Ξεκινάει πιο σφιχτά */
+}
+
+.hero h1.animate-item.appear {
+    letter-spacing: -1px; /* Ανοίγει κατά την εμφάνιση */
 }
 
 .tools-container {
@@ -341,6 +357,7 @@ nav {
     border-color: var(--accent);
 }
 
+
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -359,7 +376,7 @@ nav {
     }
 
     .hero {
-        padding-top: 140px; 
+        padding-top: 140px;
     }
 
     .hero h1 {
@@ -374,10 +391,12 @@ nav {
         grid-template-columns: 1fr;
     }
 
-    .transform-row, .transform-row.reverse {
+    .transform-row,
+    .transform-row.reverse {
         flex-direction: column;
-        text-align: center;
-        gap: 2rem;
+        text-align: left; 
+        gap: 1.5rem;
+        margin-bottom: 3.5rem; 
     }
 
     .social-links {
