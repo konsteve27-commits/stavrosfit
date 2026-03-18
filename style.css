@@ -7,6 +7,12 @@
     --accent: #ffffff;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -25,7 +31,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
 main {
@@ -33,7 +38,7 @@ main {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 150px 2rem 50px;
+    padding: 0 2rem 150px; /* Αυξήθηκε το κάτω κενό στα 150px */
 }
 
 footer {
@@ -66,7 +71,6 @@ nav {
     align-items: center;
 }
 
-/* Brand with Profile Pic */
 .brand-group {
     display: flex;
     align-items: center;
@@ -113,18 +117,59 @@ nav {
     color: var(--accent);
 }
 
-/* Animations Scroll Reveal */
 .content-section {
     display: block;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
     margin-bottom: 5rem;
 }
 
-.content-section.appear {
-    opacity: 1;
-    transform: translateY(0);
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 10vw, 6rem); /* Αλλαγή μεγέθους κατά 25% */
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    background: linear-gradient(90deg, #fff, #808080, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGradient 10s linear infinite;
+}
+
+@keyframes textGradient {
+    to { background-position: 200% center; }
+}
+
+.hero p {
+    color: var(--dim-text);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4rem;
 }
 
 .label {
@@ -134,20 +179,6 @@ nav {
     letter-spacing: 4px;
 }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    letter-spacing: -1px;
-}
-
-.hero p {
-    color: var(--dim-text);
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
 .content p {
     font-size: 1.1rem;
     color: var(--dim-text);
@@ -155,7 +186,6 @@ nav {
     margin-bottom: 2rem;
 }
 
-/* Transformation Section */
 .transformation-section {
     margin-top: 4rem;
     border-top: 1px solid var(--border);
@@ -169,34 +199,76 @@ nav {
     color: var(--text);
 }
 
-.transformation-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+.transform-row {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 5rem;
 }
 
-.transformation-grid figure {
+.transform-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.transform-text {
+    flex: 1;
+}
+
+.transform-text p {
+    font-size: 1.1rem;
+    color: var(--dim-text);
+    margin: 0;
+    line-height: 1.8;
+}
+
+.transform-image {
+    flex: 1;
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.transformation-grid img {
+.transform-image img {
     width: 100%;
+    max-width: 350px;
     height: auto;
     aspect-ratio: 4/5;
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid var(--border);
+    margin: 0 auto;
 }
 
-.transformation-grid figcaption {
+.transform-image figcaption {
     text-align: center;
     color: var(--dim-text);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+.animate-item {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-up {
+    transform: translateY(50px) scale(0.96);
+}
+
+.fade-in-left {
+    transform: translateX(-50px);
+}
+
+.fade-in-right {
+    transform: translateX(50px);
+}
+
+.animate-item.appear {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
 }
 
 .tools-container {
@@ -286,12 +358,26 @@ nav {
         justify-content: center;
     }
 
-    main {
-        padding: 190px 1.5rem 40px;
+    .hero {
+        padding-top: 140px; 
     }
 
-    .tools-container, .transformation-grid {
+    .hero h1 {
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        margin-bottom: 3rem;
+    }
+
+    .tools-container {
         grid-template-columns: 1fr;
+    }
+
+    .transform-row, .transform-row.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
     }
 
     .social-links {

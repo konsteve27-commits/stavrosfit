@@ -1,29 +1,100 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-item, .brand');
     const sections = document.querySelectorAll('.content-section');
+    const animateItems = document.querySelectorAll('.animate-item');
+    const heroItems = document.querySelectorAll('#home .animate-item');
 
-    // 1. Δυναμική Εμφάνιση Ενοτήτων (Scroll Reveal)
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 50,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "value": "circle"
+                },
+                "opacity": {
+                    "value": 0.1,
+                    "random": false
+                },
+                "size": {
+                    "value": 2,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#808080",
+                    "opacity": 0.1,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                },
+                "modes": {
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    }
+
     const revealOptions = {
-        threshold: 0.15,
+        threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
     };
 
-    const revealObserver = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('appear');
+                observer.unobserve(entry.target);
             }
         });
     }, revealOptions);
 
-    sections.forEach(section => revealObserver.observe(section));
+    heroItems.forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.2}s`;
+    });
 
-    // 2. Ενημέρωση Active Class στο Μενού κατά το Scroll
+    animateItems.forEach(item => revealObserver.observe(item));
+
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            // Αφαίρεση 150px για να ενεργοποιείται το link λίγο πριν φτάσει η ενότητα στην κορυφή
             if (pageYOffset >= (sectionTop - 150)) {
                 current = section.getAttribute('id');
             }
@@ -37,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Μετάβαση σε Ενότητα με Κλικ (Ομαλό Scroll)
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -46,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (targetSection) {
                 window.scrollTo({
-                    top: targetSection.offsetTop - 100, // Αφαίρεση ύψους fixed header
+                    top: targetSection.offsetTop - 100,
                     behavior: 'smooth'
                 });
             }
