@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroItems = document.querySelectorAll('#home .animate-item');
 
     if (typeof particlesJS !== 'undefined') {
+        const particleCount = window.innerWidth <= 768 ? 40 : 80;
+
         particlesJS('particles-js', {
             "particles": {
                 "number": {
-                    "value": 80, // Αύξηση από 50 σε 80 για πιο γεμάτη οθόνη
+                    "value": particleCount, 
                     "density": {
                         "enable": true,
                         "value_area": 800
