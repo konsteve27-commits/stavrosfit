@@ -77,8 +77,9 @@
             </div>
             <div class="nav-links">
                 <a href="#" class="nav-item" data-target="bio">Bio</a>
+                <a href="#" class="nav-item" data-target="services">Services</a>
                 <a href="#" class="nav-item" data-target="tools">Tools</a>
-                <a href="#" class="nav-item" data-target="social">Social</a>
+                <a href="#" class="nav-item" data-target="contact">Contact</a>
             </div>
         </div>
     </nav>
@@ -107,7 +108,7 @@
                                 bar exercises and effort, I managed to go from 35kg to 55kg.</p>
                         </div>
                         <figure class="transform-image">
-                            <img src="stavros16.webp" alt="Physique at 16">
+                            <img src="stavros16.webp" alt="Physique at 16" loading="lazy">
                             <figcaption>16 yrs</figcaption>
                         </figure>
                     </div>
@@ -119,16 +120,53 @@
                                 strict nutrition.</p>
                         </div>
                         <figure class="transform-image">
-                            <img src="stavros21.webp" alt="Current physique">
+                            <img src="stavros21.webp" alt="Current physique" loading="lazy">
                             <figcaption>21 yrs</figcaption>
                         </figure>
                     </div>
                 </div>
             </div>
         </section>
+        <section id="services" class="content-section">
+            <h2 class="label animate-item fade-in-up">02 // SERVICES</h2>
+            <div class="tools-container">
+                <div class="tool-card animate-item fade-in-up">
+                    <div class="tool-info">
+                        <h3>Static Website</h3>
+                        <p>Development of streamlined, fast-loading, and secure static websites tailored for essential
+                            digital presence.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card animate-item fade-in-up">
+                    <div class="tool-info">
+                        <h3>Advanced Web Development</h3>
+                        <p>Creation of complex, dynamic websites incorporating advanced functionalities, databases, and
+                            responsive design.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card animate-item fade-in-up">
+                    <div class="tool-info">
+                        <h3>Web App Architecture</h3>
+                        <p>Engineering of custom web applications, specialized calculators, and robust interactive
+                            digital tools from the ground up.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card animate-item fade-in-up">
+                    <div class="tool-info">
+                        <h3>Training & Nutrition Protocols</h3>
+                        <p>Direct access to structured, result-driven workout routines and exact nutritional guidelines
+                            via digital download.</p>
+                        <span class="badge">COMING SOON...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="tools" class="content-section">
-            <h2 class="label animate-item fade-in-up">02 // TOOLS</h2>
+            <h2 class="label animate-item fade-in-up">03 // TOOLS</h2>
 
             <div class="tools-container">
                 <div class="tool-card flagship-tool animate-item fade-in-up">
@@ -152,17 +190,79 @@
             </div>
         </section>
 
-        <section id="social" class="section content-section">
-            <h2 class="label animate-item fade-in-up">03 // SOCIAL</h2>
-            <div class="social-links animate-item fade-in-up">
-                <a href="https://www.tiktok.com/@stavrosfit" target="_blank" class="social-item">TikTok</a>
+        <section id="contact" class="content-section">
+            <h2 class="label animate-item fade-in-up">04 // CONTACT & SOCIAL</h2>
+            <div class="content animate-item fade-in-up">
+                <p>For inquiries regarding web development, custom fitness tools, or technical consulting, reach out
+                    directly via email.</p>
+                <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 2rem;">
+                    <a href="#" id="copy-email-btn" class="btn-main" style="width: fit-content;"
+                        aria-label="Copy email address">stavrosfit.web@gmail.com</a>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@stavrosfit" target="_blank" rel="noopener noreferrer"
+                            class="social-item">TikTok</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
+        <div class="footer-links">
+            <a href="#" id="open-privacy">Privacy Policy</a>
+            <a href="#" id="open-terms">Terms of Service</a>
+        </div>
         <p>&copy; 2026 STAVROS FIT</p>
     </footer>
+
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Privacy Policy</h2>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;">1. Data Collection</h3>
+                <p>This website utilizes Google Analytics to monitor traffic and user interaction. Anonymous data
+                    regarding browsing behavior is collected solely to improve service quality and performance metrics.
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;">2. Cookies</h3>
+                <p>Essential and analytical cookies are deployed. Users retain the ability to manage or disable cookie
+                    preferences directly through their browser settings.</p>
+            </div>
+            <div>
+                <h3 style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;">3. Contact Information</h3>
+                <p>Any communication directed to the provided email address is strictly confidential. Personal data
+                    submitted via email is explicitly not shared, sold, or distributed to third parties under any
+                    circumstances.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Terms of Service</h2>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;">1. Intellectual Property</h3>
+                <p>All content, digital tools (including Metab-all.com), and custom code provided on this website are
+                    the intellectual property of StavrosFit unless otherwise stated. Unauthorized reproduction or
+                    redistribution is prohibited.</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;">2. Medical Disclaimer</h3>
+                <p>Fitness and nutritional plans available for download are provided for informational and educational
+                    purposes. Always consult a qualified medical professional before commencing any new training or diet
+                    protocol. The developer holds no liability for physical injuries or health complications.</p>
+            </div>
+            <div>
+                <h3 style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;">3. Service Delivery</h3>
+                <p>Web development services and applications are provided "as is". Specific project parameters,
+                    deliverables, and financial terms will be explicitly defined in individual contracts prior to
+                    execution.</p>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
     <script src="script.js" defer></script>
 </body>

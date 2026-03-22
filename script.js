@@ -140,10 +140,70 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-window.copyToClipboard = function (text) {
-    navigator.clipboard.writeText(text).then(() => {
-        alert("Link copied to clipboard");
-    }).catch(err => {
-        console.error('Failed to copy text: ', err);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const privacyBtn = document.getElementById('open-privacy');
+    const termsBtn = document.getElementById('open-terms');
+    const privacyModal = document.getElementById('privacy-modal');
+    const termsModal = document.getElementById('terms-modal');
+    const closeBtns = document.querySelectorAll('.close-modal');
+
+    
+    if (privacyBtn && privacyModal) {
+        privacyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyModal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; 
+        });
+    }
+
+    if (termsBtn && termsModal) {
+        termsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            termsModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            privacyModal.style.display = 'none';
+            termsModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
     });
-};
+
+    
+    window.addEventListener('click', (e) => {
+        if (e.target === privacyModal) {
+            privacyModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        if (e.target === termsModal) {
+            termsModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+const copyEmailBtn = document.getElementById('copy-email-btn');
+if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const email = 'stavrosfit.web@gmail.com';
+        
+        navigator.clipboard.writeText(email).then(() => {
+            const originalText = copyEmailBtn.innerText;
+            copyEmailBtn.innerText = 'COPIED!';
+            copyEmailBtn.style.backgroundColor = 'var(--text)'; 
+            
+            setTimeout(() => {
+                copyEmailBtn.innerText = originalText;
+                copyEmailBtn.style.backgroundColor = '';
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+            copyEmailBtn.innerText = 'FAILED TO COPY';
+        });
+    });
+}
