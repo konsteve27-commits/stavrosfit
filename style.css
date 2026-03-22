@@ -274,17 +274,15 @@ nav {
 
 .animate-item.appear {
     opacity: 1;
-    /* Επιστροφή στην αρχική κατάσταση με απόλυτη ευκρίνεια */
     transform: translateY(0) scale(1);
 }
-/* Ειδικά για τον τίτλο στο Hero για να "σκάει" πιο έντονα */
 .hero h1.animate-item {
     transition-duration: 1.5s;
-    letter-spacing: -5px; /* Ξεκινάει πιο σφιχτά */
+    letter-spacing: -5px; 
 }
 
 .hero h1.animate-item.appear {
-    letter-spacing: -1px; /* Ανοίγει κατά την εμφάνιση */
+    letter-spacing: -1px; 
 }
 
 .tools-container {
@@ -356,7 +354,6 @@ nav {
     color: var(--accent);
     border-color: var(--accent);
 }
-/* Custom Selection Color */
 ::selection {
     background: var(--accent);
     color: var(--bg);
@@ -431,7 +428,6 @@ nav {
         gap: 1.5rem;
     }
 }
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -511,4 +507,24 @@ nav {
 }
 ::-webkit-scrollbar-thumb:hover {
     background: var(--dim-text);
+}
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap; 
+}
+
+.social-item {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--dim-text);
+    padding-bottom: 4px;
+    transition: all 0.3s ease;
+}
+
+.social-item:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
 }
